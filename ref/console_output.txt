@@ -1,1 +1,18 @@
-
+[2023-10-04 06:13:57] Started friendly
+[2023-10-04 06:14:19] Counter: 2
+[2023-10-04 06:14:40] Counter: 3
+[2023-10-04 06:15:01] Counter: 4
+[2023-10-04 06:15:25] Started friendly
+[2023-10-04 06:15:47] Counter: 6
+[2023-10-04 06:16:03] Failsafe activated, exiting...
+[2023-10-04 06:24:51] Started friendly
+[2023-10-04 06:24:53] Failsafe activated, exiting...
+[2023-10-04 06:25:41] Started friendly
+[2023-10-04 06:26:02] Counter: 2
+[2023-10-04 06:26:26] Counter: 3
+[2023-10-04 06:26:48] Counter: 4
+[2023-10-04 06:26:59] Failsafe activated, exiting...
+[2023-10-04 10:48:50] Starting...
+[2023-10-04 10:48:51] Table Selected - Beijing
+[2023-10-04 10:48:51] Friendly Frequency :3   Wait Timer: 35   Bet: 2.5M
+[2023-10-04 10:48:56] Failsafe activated, exiting...
