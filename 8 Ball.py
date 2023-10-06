@@ -6,12 +6,17 @@ from tkinter import ttk
 from datetime import datetime, timedelta
 import sys
 
-pause_flag = False
+game_paused = False
 bet = 0
 freq = 0
 waittimer = 0
 original_stdout = sys.stdout
 table_list = ['dbet','allin', 'berlin', 'mumbai', 'seoul', 'bang', 'rome', 'paris', 'shanghai', 'dubai', 'cairo', 'torento', 'jakarta', 'lasvegas', 'tokyo', 'moscow', 'sydney', 'london']
+conv1 = 960
+conv0 = 0
+# Specify the path to the text file where you want to save the console output
+output_file_path = 'ref/Logs/console_output.txt'
+output_file = None  # Global variable to store the file object
 
 def getFreq():
     global freq
@@ -65,12 +70,6 @@ def getBet9():
     global bet
     bet = 9
 
-conv1 = 960
-conv0 = 0
-
-# Specify the path to the text file where you want to save the console output
-output_file_path = 'ref/Logs/console_output.txt'
-output_file = None  # Global variable to store the file object
 
 class DualOutput:
     def __init__(self, *outputs):
@@ -675,20 +674,20 @@ def start_game():
         print("Please select a table.")
 
 def pause_game():
-    global game_running
-    if game_running:
-        game_running = False
+    global game_paused
+    game_paused = not game_paused  # Toggle the pause state
+    if game_paused:
         print("Game paused")
+        # Include any logic needed when the game is paused
     else:
-        print("Game is not running")
+        print("Game resumed")
+        # Include any logic needed when the game is resumed
 
 def stop_game():
-    global game_running
-    if game_running:
-        game_running = False
-        print("Game stopped")
-    else:
-        print("Game is not running")
+    global game_paused
+    print("Game stopped!")
+    # Include any cleanup or finalization code here
+    root.destroy()
 
 root = tk.Tk()
 root.title("8Ball Bot")
@@ -752,5 +751,10 @@ pause_button.grid(row=0, column=1, padx=10, pady=10)
 
 stop_button = ttk.Button(button_frame, text="STOP", command=stop_game)
 stop_button.grid(row=0, column=2, padx=10, pady=10)
+
+keyboard.add_hotkey('ctrl+alt+s', start_game)
+keyboard.add_hotkey('ctrl+alt+p', pause_game)
+keyboard.add_hotkey('ctrl+alt+q', stop_game)
+
 
 root.mainloop()
