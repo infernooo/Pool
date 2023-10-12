@@ -1,150 +1,46 @@
-[2023-10-05 21:13:06] Starting...
-[2023-10-05 21:13:06] Table Selected - Beijing
-[2023-10-05 21:13:07] Friendly Frequency : 0   Wait Timer: 0   Bet: 10M
-Game paused
-[2023-10-05 21:13:18] Started friendly
+[2023-10-12 11:03:02] Starting...
+[2023-10-12 11:03:02] Table Selected - Dallas
+[2023-10-12 11:03:02] Friendly Frequency: 5   Wait Timer: 60   Bet: 2.5M    Balance Checker: 1
++----------+----------------+---------------+-------------+---------+------------------+
+|   Time   |    Receiver    |     Sender    | Transferred | Wastage | Rate of Transfer |
++----------+----------------+---------------+-------------+---------+------------------+
+| 11:03:09 | 33,674,081,812 | 1,742,145,620 |             |         |                  |
+| Total :  |                |               |      0      |    0    |                  |
++----------+----------------+---------------+-------------+---------+------------------+
+c
++----------+----------------+---------------+-------------+-----------+------------------+
+|   Time   |    Receiver    |     Sender    | Transferred |  Wastage  | Rate of Transfer |
++----------+----------------+---------------+-------------+-----------+------------------+
+| 11:03:09 | 33,674,081,812 | 1,742,145,620 |             |           |                  |
+| 11:10:47 | 33,678,029,029 | 1,732,142,120 |  3,947,217  | 6,056,283 |      0.031       |
+| Total :  |                |               |  3,947,217  | 6,056,283 |                  |
++----------+----------------+---------------+-------------+-----------+------------------+
+[INFO] Game stopped manually.
++----------+----------------+---------------+-------------+-----------+------------------+
+|   Time   |    Receiver    |     Sender    | Transferred |  Wastage  | Rate of Transfer |
++----------+----------------+---------------+-------------+-----------+------------------+
+| 11:03:09 | 33,674,081,812 | 1,742,145,620 |             |           |                  |
+| 11:10:47 | 33,678,029,029 | 1,732,142,120 |  3,947,217  | 6,056,283 |      0.031       |
+| Total :  |                |               |  3,947,217  | 6,056,283 |                  |
++----------+----------------+---------------+-------------+-----------+------------------+
+[2023-10-12 11:25:52] Starting...
+[2023-10-12 11:25:53] Table Selected - Dallas
+[2023-10-12 11:25:53] Friendly Frequency: 3   Wait Timer: 60   Bet: 2.5M    Balance Checker: 1
++----------+----------+--------+-------------+---------+------------------+
+|   Time   | Receiver | Sender | Transferred | Wastage | Rate of Transfer |
++----------+----------+--------+-------------+---------+------------------+
+| 11:25:58 |    0     |   0    |             |         |                  |
+| Total :  |          |        |      0      |    0    |                  |
++----------+----------+--------+-------------+---------+------------------+
+Game is paused
 Game resumed
 Game paused
-[2023-10-05 21:13:26] Game is paused. Waiting...
-[2023-10-05 21:13:28] Game is paused. Waiting...
-[2023-10-05 21:13:30] Game is paused. Waiting...
-[2023-10-05 21:13:32] Game is paused. Waiting...
-[2023-10-05 21:13:34] Game is paused. Waiting...
+Game resumed
 Game stopped!
-[2023-10-05 21:13:36] Game is paused. Waiting...
-[2023-10-05 21:13:38] Game is paused. Waiting...
-[2023-10-05 22:35:44] Starting...
-[2023-10-05 22:35:44] Table Selected - Beijing
-[2023-10-05 22:35:45] Friendly Frequency : 3   Wait Timer: 0   Bet: 50k
-[2023-10-05 22:35:56] Started friendly
-[2023-10-05 22:36:13] Counter: 2
-[2023-10-05 22:36:23] Mis-Match Backed - Screen 2
-[2023-10-05 22:36:37] Failsafe activated, exiting...
-[2023-10-05 22:37:56] Starting...
-[2023-10-05 22:37:56] Table Selected - Beijing
-[2023-10-05 22:37:57] Friendly Frequency : 3   Wait Timer: 35   Bet: 50k
-[2023-10-05 22:38:07] Started friendly
-[2023-10-05 22:38:17] Failsafe activated, exiting...
-[2023-10-06 03:28:48] Started friendly
-[2023-10-06 03:29:10] Counter: 2
-[2023-10-06 03:29:19] Failsafe activated, exiting...
-[2023-10-06 03:29:53] Started friendly
-[2023-10-06 03:30:14] Counter: 2
-[2023-10-06 03:30:24] Failsafe activated, exiting...
-[2023-10-06 03:30:52] Started friendly
-[2023-10-06 03:31:16] Counter: 2
-[2023-10-06 03:31:33] Failsafe activated, exiting...
-[2023-10-06 03:42:51] Counter: 1
-[2023-10-06 03:43:07] Failsafe activated, exiting...
-[2023-10-06 03:43:37] Started friendly
-[2023-10-06 03:44:03] Failsafe activated, exiting...
-[2023-10-06 03:47:28] Started friendly
-[2023-10-06 03:47:36] Counter: 2
-[2023-10-06 03:47:53] Failsafe activated, exiting...
-[2023-10-06 03:48:22] Started friendly
-[2023-10-06 03:49:05] Failsafe activated, exiting...
-[2023-10-06 03:50:20] Started friendly
-[2023-10-06 03:50:28] Counter: 2
-[2023-10-06 03:50:36] Failsafe activated, exiting...
-[2023-10-06 03:50:52] Failsafe activated, exiting...
-[2023-10-06 03:53:48] Started friendly
-[2023-10-06 03:53:58] Counter: 2
-[2023-10-06 03:54:23] Failsafe activated, exiting...
-[2023-10-06 03:55:07] Started friendly
-[2023-10-06 03:55:15] Counter: 2
-[2023-10-06 03:55:30] Failsafe activated, exiting...
-[2023-10-06 03:55:58] Started friendly
-[2023-10-06 03:56:07] Counter: 2
-[2023-10-06 03:56:22] Failsafe activated, exiting...
-[2023-10-06 03:56:47] Started friendly
-[2023-10-06 03:57:06] Counter: 2
-[2023-10-06 03:57:30] Counter: 3
-[2023-10-06 03:57:46] Counter: 4
-[2023-10-06 03:57:48] Failsafe activated, exiting...
-[2023-10-06 09:59:29] Counter: 1
-[2023-10-06 09:59:41] Failsafe activated, exiting...
-[2023-10-06 10:01:21] Started friendly
-[2023-10-06 10:01:30] Failsafe activated, exiting...
-[2023-10-06 10:07:04] Failsafe activated, exiting...
-[2023-10-06 10:07:33] Started friendly
-[2023-10-06 10:07:48] Counter: 2
-[2023-10-06 10:08:09] Mis-Match Backed - Screen 1
-[2023-10-06 10:08:23] Counter: 3
-[2023-10-06 10:08:31] Counter: 4
-[2023-10-06 10:08:35] Mis-Match Backed - Screen 2
-[2023-10-06 10:08:45] Counter: 5
-[2023-10-06 10:08:53] Counter: 6
-[2023-10-06 10:09:09] Failsafe activated, exiting...
-[2023-10-06 10:10:30] Started friendly
-[2023-10-06 10:10:39] Counter: 2
-[2023-10-06 10:10:57] Counter: 3
-[2023-10-06 10:11:12] Counter: 4
-[2023-10-06 10:11:30] Counter: 5
-[2023-10-06 10:11:46] Counter: 6
-[2023-10-06 10:11:54] Failsafe activated, exiting...
-[2023-10-06 10:12:27] Started friendly
-[2023-10-06 10:12:37] Counter: 2
-[2023-10-06 10:12:53] Counter: 3
-[2023-10-06 10:13:15] Counter: 4
-[2023-10-06 10:13:36] Failsafe activated, exiting...
-[2023-10-06 10:13:59] Started friendly
-[2023-10-06 10:14:09] Counter: 2
-[2023-10-06 10:14:25] Counter: 3
-[2023-10-06 10:14:45] Counter: 4
-[2023-10-06 10:14:54] Failsafe activated, exiting...
-[2023-10-06 10:15:24] Started friendly
-[2023-10-06 10:15:46] Counter: 2
-[2023-10-06 10:16:12] Counter: 3
-[2023-10-06 10:17:11] Counter: 4
-[2023-10-06 10:17:25] Failsafe activated, exiting...
-[2023-10-06 10:17:49] Started friendly
-[2023-10-06 10:17:56] Counter: 2
-[2023-10-06 10:18:12] Counter: 3
-[2023-10-06 10:18:30] Failsafe activated, exiting...
-[2023-10-06 10:20:18] Started friendly
-[2023-10-06 10:20:26] Counter: 2
-[2023-10-06 10:20:32] Counter: 3
-[2023-10-06 10:20:47] Counter: 4
-[2023-10-06 10:21:07] Failsafe activated, exiting...
-[2023-10-06 10:21:35] Started friendly
-[2023-10-06 10:21:40] Failsafe activated, exiting...
-[2023-10-06 10:21:59] Started friendly
-[2023-10-06 10:22:07] Counter: 2
-[2023-10-06 10:22:28] Counter: 3
-[2023-10-06 10:22:37] Failsafe activated, exiting...
-[2023-10-06 10:22:57] Started friendly
-[2023-10-06 10:23:01] Counter: 2
-[2023-10-06 10:23:21] Counter: 3
-[2023-10-06 10:23:39] Counter: 4
-[2023-10-06 10:23:48] Failsafe activated, exiting...
-[2023-10-06 10:24:13] Started friendly
-[2023-10-06 10:24:31] Counter: 2
-[2023-10-06 10:24:48] Counter: 3
-[2023-10-06 10:25:08] Counter: 4
-[2023-10-06 10:25:31] Started friendly
-[2023-10-06 10:25:36] Failsafe activated, exiting...
-[2023-10-06 10:26:19] Started friendly
-[2023-10-06 10:26:49] Counter: 2
-[2023-10-06 10:27:23] Counter: 3
-[2023-10-06 10:27:29] Mis-Match Backed - Screen 1
-[2023-10-06 10:27:32] Failsafe activated, exiting...
-[2023-10-06 10:28:02] Started friendly
-[2023-10-06 10:28:33] Counter: 2
-[2023-10-06 10:29:28] Failsafe activated, exiting...
-[2023-10-06 10:30:42] Started friendly
-[2023-10-06 10:31:01] Counter: 2
-[2023-10-06 10:31:13] Mis-Match Backed - Screen 2
-[2023-10-06 10:32:05] Counter: 3
-[2023-10-06 10:32:59] Counter: 4
-[2023-10-06 10:33:03] Mis-Match Backed - Screen 1
-[2023-10-06 10:33:40] Started friendly
-[2023-10-06 10:34:02] Counter: 6
-[2023-10-06 10:34:23] Counter: 7
-[2023-10-06 10:34:48] Counter: 8
-[2023-10-06 10:34:51] Mis-Match Backed - Screen 1
-[2023-10-06 10:35:49] Started friendly
-[2023-10-06 10:36:11] Counter: 10
-[2023-10-06 10:36:32] Counter: 11
-[2023-10-06 10:36:53] Counter: 12
-[2023-10-06 10:37:20] Started friendly
-[2023-10-06 10:37:31] Failsafe activated, exiting...
+[ERROR] PyAutoGUI fail-safe exception triggered. Stopping the game.
++----------+----------+--------+-------------+---------+------------------+
+|   Time   | Receiver | Sender | Transferred | Wastage | Rate of Transfer |
++----------+----------+--------+-------------+---------+------------------+
+| 11:25:58 |    0     |   0    |             |         |                  |
+| Total :  |          |        |      0      |    0    |                  |
++----------+----------+--------+-------------+---------+------------------+
