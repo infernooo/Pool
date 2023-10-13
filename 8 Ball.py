@@ -1,3 +1,5 @@
+from licensing.models import *
+from licensing.methods import Key, Helpers
 import pyautogui
 import time
 import keyboard
@@ -9,7 +11,49 @@ import pytesseract
 from PIL import Image, ImageEnhance, ImageFilter
 import re
 from prettytable import PrettyTable
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
+class LicenseChecker:
+        # RSA Public Key used for license key activation
+    RSAPubKey = "<RSAKeyValue><Modulus>u/4wloPTxHnNYMcrVwweX0ZbhCHPNarLm447udYUfvPPBWKmckkcjxoMsxIG9CZo33+Dec2PXJnnu3vTEd5qbivhhNO039lXVQieA4BnpjJGb/YyEUn8RSI0A0WUpU/nRX4jnEiaZchC2g3J18qR7vm/BpPCpVG7UVWYmaptzDv8slxrMvfgt6KrvL2pdLPkEfGoZSuW27coJjjPLXraDLL64t+l8bsfeHsSKlm90Dzi+pk+98iqnY6FBDk79+EQ2KCJ4tB6i5GhKvy12TYxG96yhxKopxUTkSD+yF8l/hgVTMj0eh9LLoPkgjrC98d0DUCqfOyPRYhdwIrdWt5eHQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>"
+
+    # Authorization token
+    auth = "WyI2MzcyMTkxMCIsInVHd3BvZ1RSZXFtRGdBcWtEVXBxV25XajZkT0E5VTY2aUEyUzlFaEkiXQ=="
+
+
+    @staticmethod
+    def check_license(license_key):
+        # Attempt to activate the license key
+        result = Key.activate(
+            token=LicenseChecker.auth,
+            rsa_pub_key=LicenseChecker.RSAPubKey,
+            product_id=22237,
+            key=license_key,
+            machine_code=Helpers.GetMachineCode(v=2)
+        )
+
+        # Check the activation result
+        if result[0] is None or not Helpers.IsOnRightMachine(result[0], v=2):
+            # An error occurred or the key is invalid or cannot be activated
+            # (e.g., the limit of activated devices was reached)
+            return False, result[1]
+        else:
+            # Everything went fine if we are here!
+            activated_license = result[0]
+            return True, {
+                "feature_1": activated_license.f1,
+                "feature_2": activated_license.f2,
+                "feature_3": activated_license.f3,
+                "feature_4": activated_license.f4,
+                "feature_5": activated_license.f5,
+                "feature_6": activated_license.f6,
+                "feature_7": activated_license.f7,
+                "feature_8": activated_license.f8,
+                "expires": activated_license.expires
+
+            }
+
+is_valid, license_info = LicenseChecker.check_license(input("Enter your license key: "))
 game_paused = False
 bet = 0
 freq = 0
@@ -40,49 +84,9 @@ def getBalanceReader():
     freq_balance_check = e_balance_checker.get()
 
 
-def getBet1():
+def on_bet_button_click(bet_value):
     global bet
-    bet = 1
-
-
-def getBet2():
-    global bet
-    bet = 2
-
-
-def getBet3():
-    global bet
-    bet = 3
-
-
-def getBet4():
-    global bet
-    bet = 4
-
-
-def getBet5():
-    global bet
-    bet = 5
-
-
-def getBet6():
-    global bet
-    bet = 6
-
-
-def getBet7():
-    global bet
-    bet = 7
-
-
-def getBet8():
-    global bet
-    bet = 8
-
-
-def getBet9():
-    global bet
-    bet = 9
+    bet = bet_value
 
 
 class DualOutput:
@@ -473,7 +477,20 @@ def play_game(game_type, no_of_clicks, table_name, Initial_Balance_r1, Initial_B
         while True:
             back_on_mismatch()
             check_for_cross()
-
+            if  counter % (int(freq) + 1) == 0 and pyautogui.locateOnScreen('ref/friends2.png', region=(345 + conv0, 511, 40, 40),
+                                            grayscale=False, confidence=0.5) and pyautogui.locateOnScreen(
+                        'ref/friends2.png', region=(345 + conv1, 511, 40, 40), grayscale=False, confidence=0.5):
+                
+                pyautogui.doubleClick(362 + conv1, 530)
+                time.sleep(1.3)
+                pyautogui.click(368 + conv1, 477)
+                time.sleep(1.3)
+                pyautogui.click(395 + conv1, 390)
+                time.sleep(2)
+                pyautogui.click(1673 - conv1, 191)
+                time.sleep(2.3)
+                pyautogui.click(722 + conv1, 192)
+                counter += 1
             if to_check_bal and pyautogui.locateOnScreen('ref/friends2.png', region=(345 + conv0, 511, 40, 40),
                                                          grayscale=False, confidence=0.5) and pyautogui.locateOnScreen(
                     'ref/friends2.png', region=(345 + conv1, 511, 40, 40), grayscale=False, confidence=0.5):
@@ -507,26 +524,6 @@ def play_game(game_type, no_of_clicks, table_name, Initial_Balance_r1, Initial_B
                 # Print the updated table
                 print("\033c")  # ANSI escape code to clear console
                 print(table)
-
-            if pyautogui.locateOnScreen('ref/friends2.png', region=(345 + conv0, 511, 40, 40),
-                                        grayscale=False, confidence=0.5) and pyautogui.locateOnScreen(
-                    'ref/friends2.png', region=(345 + conv1, 511, 40, 40), grayscale=False, confidence=0.5) and counter % (
-                    int(freq) + 1) == 0:
-                pyautogui.doubleClick(362 + conv1, 530)
-                time.sleep(1.3)
-                pyautogui.click(368 + conv1, 477)
-                time.sleep(1.3)
-                pyautogui.click(395 + conv1, 390)
-                time.sleep(2)
-                pyautogui.click(1673 - conv1, 191)
-                time.sleep(2.3)
-                pyautogui.click(722 + conv1, 192)
-                # print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Started friendly")
-                counter += 1
-
-            Greenbox_Check()
-            to_check_bal = Leave_Sequence(counter, int(freq))
-            Backs_Inactive_screens()
                 
             #9 Ball Mode
             if game_type == "9bp":
@@ -568,7 +565,7 @@ def play_game(game_type, no_of_clicks, table_name, Initial_Balance_r1, Initial_B
                     # print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Counter: {counter}")  
 
             #PlaySpecial Mode    
-            elif game_type == "special": 
+            if game_type == "special": 
                 if pyautogui.locateOnScreen('ref/playspecial.png', region=(526 + conv1, 325, 120, 100),
                                                                     grayscale=True, confidence=0.9) is not None and \
                     pyautogui.locateOnScreen('ref/playspecial.png', region=(526 + conv0, 325, 120, 100),
@@ -615,7 +612,7 @@ def play_game(game_type, no_of_clicks, table_name, Initial_Balance_r1, Initial_B
 
 
             #1 on 1 Mode
-            elif game_type == "1o1": 
+            if game_type == "1o1": 
                 if pyautogui.locateOnScreen('ref/playone.png', region=(370 + conv0, 325, 130, 90),
                                                                grayscale=True, confidence=0.9) is not None and \
                     pyautogui.locateOnScreen('ref/playone.png', region=(370 + conv1, 325, 130, 90),
@@ -648,6 +645,10 @@ def play_game(game_type, no_of_clicks, table_name, Initial_Balance_r1, Initial_B
                     pyautogui.click(585 + conv1, 496)
                     time.sleep(0.2)
                     pyautogui.click(585 + conv0, 496)
+            
+            Greenbox_Check()
+            to_check_bal = Leave_Sequence(counter, int(freq))
+            Backs_Inactive_screens()
                 
     except pyautogui.FailSafeException:
         print("[ERROR] PyAutoGUI fail-safe exception triggered. Stopping the game.")
@@ -700,7 +701,7 @@ def start_game():
             f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Friendly Frequency: {freq}   Wait Timer: {waittimer}   Bet: {str(bet_amounts[bet - 1])}    Balance Checker: {freq_balance_check}")
 
         # Loop through check_for_cross(), leave_sequence(), and Individual_leave_sequence()
-        while Individual_Leave_Sequence(conv0) or Individual_Leave_Sequence(conv1) or check_for_cross() or Leave_Sequence():
+        while Greenbox_Check() or check_for_cross() or Leave_Sequence():
             time.sleep(1)
             pass  # You may want to add a delay or other logic here
 
@@ -730,78 +731,139 @@ def stop_game():
     # Include any cleanup or finalization code here
     root.destroy()
 
-root = tk.Tk()
-root.title("8Ball Bot")
-root.resizable(False, False)
 
-icon_path = r"C:\Users\sahas\Desktop\Bot2\TitleBar.ico"
-root.iconbitmap(icon_path)
-                
-style = ttk.Style()
-style.configure("TButton", font=('Arial', 10))
 
-e = tk.Entry(root, font=('Arial', 10))
-e.grid(row=0, column=1, padx=10, pady=10)
+if is_valid:
+    print("The license is valid!")
+    for feature, value in license_info.items():
+        if value:
+            print(f"{feature.capitalize()}: {value}")
+    print("License expires:", license_info["expires"])
 
-e_wait_timer = tk.Entry(root, font=('Arial', 10))
-e_wait_timer.grid(row=1, column=1, padx=10, pady=10)
+    root = tk.Tk()
+    root.title("8Ball Bot")
+    root.resizable(False, False)
+                    
+    style = ttk.Style()
+    style.configure("TButton", font=('Arial', 10))
 
-e_balance_checker = tk.Entry(root, font=('Arial', 10))
-e_balance_checker.grid(row=2, column=1, padx=10, pady=10)
+    e = tk.Entry(root, font=('Arial', 10))
+    e.grid(row=0, column=1, padx=10, pady=10)
 
-mybuttonFreq = ttk.Button(root, text="Frequency", command=getFreq)
-mybuttonFreq.grid(row=0, column=2, padx=10, pady=10)
+    e_wait_timer = tk.Entry(root, font=('Arial', 10))
+    e_wait_timer.grid(row=1, column=1, padx=10, pady=10)
 
-mybuttonWait = ttk.Button(root, text="Wait Timer", command=setWaitTimer)
-mybuttonWait.grid(row=1, column=2, padx=10, pady=10)
+    e_balance_checker = tk.Entry(root, font=('Arial', 10))
+    e_balance_checker.grid(row=2, column=1, padx=10, pady=10)
 
-mybuttonNew = ttk.Button(root, text="Balance Checker", command=getBalanceReader)
-mybuttonNew.grid(row=2, column=2, padx=10, pady=10)
+    mybuttonFreq = ttk.Button(root, text="Frequency", command=getFreq)
+    mybuttonFreq.grid(row=0, column=2, padx=10, pady=10)
 
-bet_frame = ttk.Frame(root)
-bet_frame.grid(row=3, column=0, columnspan=6, padx=10, pady=10)
+    mybuttonWait = ttk.Button(root, text="Wait Timer", command=setWaitTimer)
+    mybuttonWait.grid(row=1, column=2, padx=10, pady=10)
 
-bet_amounts = ["100", "500", "2.5k", "10k", "50k", "100k", "500k", "2.5M", "10M"]
-bet_buttons = []
+    mybuttonNew = ttk.Button(root, text="Balance Checker", command=getBalanceReader)
+    mybuttonNew.grid(row=2, column=2, padx=10, pady=10)
 
-for i, amount in enumerate(bet_amounts):
-    bet_button = ttk.Button(bet_frame, text=amount, style="TButton", command=locals()[f'getBet{i+1}'])
-    bet_button.grid(row=i//3, column=i%3, padx=5, pady=5)
+    bet_frame = ttk.Frame(root)
+    bet_frame.grid(row=3, column=0, columnspan=6, padx=10, pady=10)
+
+    bet_amounts = ["100", "500", "2.5k", "10k", "50k", "100k", "500k", "2.5M", "10M"]
+    bet_buttons = []
+
+    for i, amount in enumerate(bet_amounts):
+        bet_button = ttk.Button(bet_frame, text=amount, style="TButton", command=lambda val=i+1: on_bet_button_click(val))
+        bet_button.grid(row=i // 3, column=i % 3, padx=5, pady=5)
+
+        style.map(f"BetButton{i+1}.TButton", foreground=[("active", "purple")], background=[("active", "#007acc")])
+        style.configure(f"BetButton{i+1}.TButton", padding=(5, 5), width=10, height=2, relief="raised")
+        bet_button.config(style=f"BetButton{i+1}.TButton")
+        bet_buttons.append(bet_button)
+
+    frame_game = ttk.LabelFrame(root, text="Select a Game")
+    frame_game.grid(row=4, column=0, columnspan=4, padx=10, pady=10)
+
+
+    # Assuming combo_table is created like this in your code:
+    combo_table = ttk.Combobox(frame_game, values=[
+        "Miami Beach", "Dallas", "Istanbul", "Beijing", "All-In",
+        "Berlin - 25M", "Mumbai - 15M", "Seoul - 10M", "Bangkok - 5M",
+        "Rome - 4M", "Paris - 2.5M", "Shanghai - 1M", "Dubai - 500K",
+        "Cairo - 250K", "Toronto - 100K", "Jakarta - 50K",
+        "Las Vegas", "Tokyo", "Moscow", "Sydney", "London"
+    ])
+
+    # Assuming license_info is a dictionary with features as keys
+    # and True or False as values
+
+    # Disable all options initially
+    combo_table['state'] = 'readonly'
+
+    combo_values = []
+
+
+    # Check each feature and add corresponding values
+    if license_info['feature_3']:
+        combo_values.append("Beijing")
+
+    if license_info['feature_4']:
+        combo_values.append("Miami Beach")
+
+    if license_info['feature_5']:
+        combo_values.append("Dallas")
+
+    if license_info['feature_6']:
+        combo_values.append("Istanbul")
+
+    if license_info['feature_7']:
+        combo_values.extend(["All-In","Berlin - 25M"])
+
+    if license_info['feature_8']:
+        combo_values.append("Mumbai - 15M")
+
+    if license_info['feature_1']:
+        combo_values.append("Seoul - 10M")
     
-    style.map(f"BetButton{i+1}.TButton", foreground=[("active", "purple")], background=[("active", "#007acc")])
-    style.configure(f"BetButton{i+1}.TButton", padding=(5, 5), width=10, height=2, relief="raised")
-    bet_button.config(style=f"BetButton{i+1}.TButton")
-    bet_buttons.append(bet_button)
+    if license_info['feature_2']:
+        combo_values.extend(["Bangkok - 5M","Rome - 4M", "Paris - 2.5M", "Shanghai - 1M", "Dubai - 500K",
+                    "Cairo - 250K", "Toronto - 100K", "Jakarta - 50K",
+                    "Las Vegas", "Tokyo", "Moscow", "Sydney", "London"])
 
-frame_game = ttk.LabelFrame(root, text="Select a Game")
-frame_game.grid(row=4, column=0, columnspan=4, padx=10, pady=10)
+    # Add other options if no specific features are true
+    if not combo_values:
+        combo_values.extend([
+            "Miami Beach", "Dallas", "Istanbul", "Beijing", "All-In",
+            "Berlin - 25M", "Mumbai - 15M", "Seoul - 10M", "Bangkok - 5M",
+            "Rome - 4M", "Paris - 2.5M", "Shanghai - 1M", "Dubai - 500K",
+            "Cairo - 250K", "Toronto - 100K", "Jakarta - 50K",
+            "Las Vegas", "Tokyo", "Moscow", "Sydney", "London"
+        ])
 
+    combo_table['values'] = combo_values
+    combo_table.set("Select Table")
+    combo_table['state'] = 'readonly'
 
-combo_table = ttk.Combobox(frame_game, values=["Miami Beach", "Dallas", "Istanbul","Beijing", "All-In", 
-                                               "Berlin - 25M", "Mumbai - 15M", "Seoul - 10M", "Bangkok - 5M", 
-                                               "Rome - 4M", "Paris - 2.5M", "Shanghai - 1M", "Dubai - 500K",
-                                                "Cairo - 250K" , "Toronto - 100K", "Jakarta - 50K", 
-                                               "Las Vegas", "Tokyo", "Moscow", "Sydney", "London"])
-combo_table.set("Select Table")
-combo_table.grid(row=0, column=0, padx=10, pady=10)
-
-
-button_frame = ttk.Frame(frame_game)
-button_frame.grid(row=1, column=0, padx=10, pady=10)
-
-start_button = ttk.Button(button_frame, text="START", command=start_game)
-start_button.grid(row=0, column=0, padx=10, pady=10)
+    combo_table.grid(row=0, column=0, padx=10, pady=10)
 
 
-pause_button = ttk.Button(button_frame, text="PAUSE", command=pause_game)
-pause_button.grid(row=0, column=1, padx=10, pady=10)
+    button_frame = ttk.Frame(frame_game)
+    button_frame.grid(row=1, column=0, padx=10, pady=10)
 
-stop_button = ttk.Button(button_frame, text="STOP", command=stop_game)
-stop_button.grid(row=0, column=2, padx=10, pady=10)
-
-keyboard.add_hotkey('ctrl+alt+s', start_game)
-keyboard.add_hotkey('ctrl+alt+p', pause_game)
-keyboard.add_hotkey('ctrl+alt+q', stop_game)
+    start_button = ttk.Button(button_frame, text="START", command=start_game)
+    start_button.grid(row=0, column=0, padx=10, pady=10)
 
 
-root.mainloop()
+    pause_button = ttk.Button(button_frame, text="PAUSE", command=pause_game)
+    pause_button.grid(row=0, column=1, padx=10, pady=10)
+
+    stop_button = ttk.Button(button_frame, text="STOP", command=stop_game)
+    stop_button.grid(row=0, column=2, padx=10, pady=10)
+
+    # keyboard.add_hotkey('ctrl+alt+s', start_game)
+    # keyboard.add_hotkey('ctrl+alt+p', pause_game)
+    # keyboard.add_hotkey('ctrl+alt+q', stop_game)
+
+
+    root.mainloop()
+else:
+    print("The license does not work:", license_info)
